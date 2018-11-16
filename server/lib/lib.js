@@ -14,6 +14,13 @@ export const getProfile = (obj, repos) => {
     //   languages,
     //   repos
     // ),
+    // titles: [
+    //   isForker(repos),
+    //   isOneTrickPony(repos),
+    //   isJackOfAllTrades(repos),
+    //   isStalker(user),
+    //   isMrPopular(user)
+    // ].filter(title => title),
     favoriteLanguage: generateFavLanguage(repos),
     publicRepos: obj.public_repos,
     totalStars: generateTotalStars(repos),
@@ -74,6 +81,7 @@ const generateFavLanguage = repos => {
         languages[`${repo.language}`] = 1
       }
     }
+    return languages
   }
   let favoriteLanguage = Object.entries(languages).reduce(
     (acc, language) => (acc[1] > language[1] ? acc : language),
@@ -81,6 +89,14 @@ const generateFavLanguage = repos => {
   )[0]
   return favoriteLanguage
 }
+// const languageTotals = repos =>
+//   repos.map(repo => repo.language).reduce(
+//     (languageTotals, language) => ({
+//       ...languageTotals,
+//       [language]: languageTotals[language] ? languageTotals[language] + 1 : 1
+//     }),
+//     {}
+//   )
 
 // const generateLanguages = repos => {
 //   let languages = {}
@@ -95,23 +111,6 @@ const generateFavLanguage = repos => {
 //   }
 //   return languages
 // }
-// const generateFavLanguage = (repos, l) => {
-//     let mostInstances = repos[0]
-//     let previousCount = 0
-//     for(let repo of repos){
-//       let count = 0
-//       for(l of repos){
-//         if(l.language===repos.language){
-//           count++
-//         }
-//       }
-//       if(count > previousCount){
-//         favoriteLanguage = language
-//         previousCount = count
-//       }
-//     }
-//     return favoriteLanguage
-//    }
 
 const generateTotalStars = repos => {
   let initialValue = 0
@@ -144,3 +143,20 @@ const generatePerfectRepos = repos => {
   }
   return perfectRepos
 }
+// const isForker = repos =>
+//   (repos.filter(repo => repo.fork).length > repos.length / 2 ? 'Forker' : '')
+
+// const isOneTrickPony = repos =>
+//   (repos.map(repo => repo.language).filter(onlyUnique).length === 1
+//     ? 'One-Trick Pony'
+//     : '')
+
+// const isJackOfAllTrades = repos =>
+//   (repos.map(repo => repo.language).filter(onlyUnique).length >= 10
+//     ? 'Jack of all Trades'
+//     : '')
+
+// const isStalker = user => (user.following > user.followers * 2 ? 'Stalker' : '')
+
+// const isMrPopular = user =>
+//   (user.followers > user.following * 2 ? 'Mr. Popular' : '')
