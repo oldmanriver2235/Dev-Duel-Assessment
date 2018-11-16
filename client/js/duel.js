@@ -1,50 +1,3 @@
-const isDefined = value => value || ''
-
-const userHtml = user =>
-  `
-<div class="user-info">
-  <span class="username">${user.username}</span>
-  <span class="full-name">${isDefined(user.name)}</span>
-  <span class="location">${isDefined(user.location)}</span>
-  <span class="email">${isDefined(user.email)}</span>
-  <span class="bio">${isDefined(user.bio)}</span>
-</div>
-<img class="avatar" src="${user['avatar_url']}" alt="avatar picture">
-<div class="stats">
-  <div class="stat">
-      <span class="label">Titles:&nbsp;</span>
-      <span class="titles value">${user.titles}</span>
-  </div>
-  <div class="stat">
-      <span class="label">Favorite Language:&nbsp;</span>
-      <span class="favorite-language value">${user['favorite-language'] === null ? 'none' : user['favorite-language']}</span>
-  </div>
-  <div class="stat">
-      <span class="label">Total Stars:&nbsp;</span>
-      <span class="total-stars value">${user['total-stars']}</span>
-  </div>
-  <div class="stat">
-      <span class="label">Highest Star Count:&nbsp;</span>
-      <span class="most-starred value">${user['highest-starred']}</span>
-  </div>
-  <div class="stat">
-      <span class="label">Public Repos:&nbsp;</span>
-      <span class="public-repos value">${user['public-repos']}</span>
-  </div>
-  <div class="stat">
-      <span class="label">Perfect Repos:&nbsp;</span>
-      <span class="perfect-repos value">${user['perfect-repos']}</span>
-  </div>
-  <div class="stat">
-      <span class="label">Followers:&nbsp;</span>
-      <span class="followers value">${user.followers}</span>
-  </div>
-  <div class="stat">
-      <span class="label">Following:&nbsp;</span>
-      <span class="followers value">${user.following}</span>
-  </div>
-</div>`
-
 $('form').submit(() => {
   const leftUsername = $('#username-left').val()
   const rightUsername = $('#username-right').val()
@@ -53,9 +6,44 @@ $('form').submit(() => {
     .then(response => response.json())
     .then(users => {
       if (!users.message) {
-        const usersHtml = users.map(user => userHtml(user))
-        $('.user-results.left').html(usersHtml[0])
-        $('.user-results.right').html(usersHtml[1])
+        $('.user-results.left .username').text(users[0].username)
+        $('.user-results.left .full-name').text(users[0].name)
+        $('.user-results.left .location').text(users[0].location)
+        $('.user-results.left .avatar').attr('src', users[0].avatar_url)
+        $('.user-results.left .email').text(users[0].email)
+        $('.user-results.left .bio').text(users[0].bio)
+        $('.user-results.left .titles.value').text(users[0].titles)
+        $('.user-results.left .total-stars.value').text(users[0].totalStars)
+        $('.user-results.left .favorite-language.value').text(
+          users[0].favoriteLanguage
+        )
+        $('.user-results.left .most-starred.value').text(
+          users[0].highestStarred
+        )
+        $('.user-results.left .public-repos.value').text(users[0].publicRepos)
+        $('.user-results.left .perfect-repos.value').text(users[0].perfectRepos)
+        $('.user-results.left .followers.value').text(users[0].followers)
+        $('.user-results.left .following.value').text(users[0].following)
+        $('.user-results.right .username').text(users[1].username)
+        $('.user-results.right .full-name').text(users[1].name)
+        $('.user-results.right .location').text(users[1].location)
+        $('.user-results.right .avatar').attr('src', users[1].avatar_url)
+        $('.user-results.right .email').text(users[1].email)
+        $('.user-results.right .bio').text(users[1].bio)
+        $('.user-results.right .titles.value').text(users[1].titles)
+        $('.user-results.right .total-stars.value').text(users[1].totalStars)
+        $('.user-results.right .favorite-language.value').text(
+          users[1].favoriteLanguage
+        )
+        $('.user-results.right .most-starred.value').text(
+          users[1].highestStarred
+        )
+        $('.user-results.right .public-repos.value').text(users[1].publicRepos)
+        $('.user-results.right .perfect-repos.value').text(
+          users[1].perfectRepos
+        )
+        $('.user-results.right .followers.value').text(users[1].followers)
+        $('.user-results.right .following.value').text(users[1].following)
         $('.duel-container').removeClass('hide')
       }
     })
