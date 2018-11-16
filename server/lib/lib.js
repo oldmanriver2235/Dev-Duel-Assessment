@@ -34,8 +34,8 @@ let generateTitles = (
 
   if (forkedRepos > publicRepos / 2) {
     titles.push('Forker')
-    // }
-    // if (languages.length == 1) {
+    // // }
+    // if (containsOnlyOne(generateLanguages(repos))) {
     //   titles.push('One Trick Pony')
     // }
     // if (languages.length >= 10) {
@@ -128,11 +128,20 @@ const generatePerfectRepos = repos => {
 //   for (let repo of repos) {
 //     if (repo.language) {
 //       if (languages[`${repo.language}`]) {
-//         languages[`${repo.language}`] += 1
 //       } else {
-//         languages[`${repo.language}`] = 1
+
 //       }
 //     }
 //   }
+//   return languages
+// }
+// const generatelanguages = repos => {
+//   let languages = {}
+//   for (let repo of repos) {
+//     if (repo.language !== null) {
+//       languages.push(repo.language)
+//     }
+//   }
+//   console.log(languages)
 //   return languages
 // }
