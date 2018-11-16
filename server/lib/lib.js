@@ -9,7 +9,7 @@ export const getProfile = (obj, repos) => {
     titles: generateTitles(
       generateForkedRepos(repos),
       obj.public_repos,
-      generateLanguages(repos),
+      // generateLanguages(repos),
       obj.followers,
       obj.following
     ),
@@ -26,7 +26,7 @@ export const getProfile = (obj, repos) => {
 let generateTitles = (
   forkedRepos,
   publicRepos,
-  languages,
+  // languages,
   followers,
   following
 ) => {
@@ -34,12 +34,12 @@ let generateTitles = (
 
   if (forkedRepos > publicRepos / 2) {
     titles.push('Forker')
-  }
-  if (languages.length == 1) {
-    titles.push('One Trick Pony')
-  }
-  if (languages.length >= 10) {
-    titles.push('Jack of all Trades')
+    // }
+    // if (languages.length == 1) {
+    //   titles.push('One Trick Pony')
+    // }
+    // if (languages.length >= 10) {
+    //   titles.push('Jack of all Trades')
   }
   if (following > 0 && following >= followers * 2) {
     titles.push('Stalker')
@@ -73,12 +73,12 @@ const generateFavLanguage = repos => {
         languages[`${repo.language}`] = 1
       }
     }
-    return languages
   }
   let favoriteLanguage = Object.entries(languages).reduce(
     (acc, language) => (acc[1] > language[1] ? acc : language),
     [null, 0]
   )[0]
+  console.log(favoriteLanguage)
   return favoriteLanguage
 }
 
