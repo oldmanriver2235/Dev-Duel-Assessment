@@ -1,5 +1,5 @@
 body {
-    background-color: #efefef;
+    background-color: #bbc5bd;
     width: 100vw;
     height: 100vh;
 
@@ -32,7 +32,7 @@ main {
     height: 90%;
 
     border-radius: 4px;
-    background-color: #FFFFFF;
+    background-color: rgb(43, 192, 58);
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -81,8 +81,8 @@ a.active {
 }
 
 button {
-    color: #111111;
-    background: transparent;
+    color: #d4c0c0;
+    background: rgb(185, 72, 27);
     border: 2px solid #111111;
     border-radius: 4px;
     transition-duration: 0.2s;
