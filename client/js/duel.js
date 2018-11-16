@@ -63,3 +63,9 @@ $('form').submit(() => {
     })
   return false
 })
+
+// if (${leftUsername}.perfectRepos > ${rightUsername}.perfectRepos) {
+//   return '${leftUsername} is the victor!'
+// }else {
+//   return '${rightUsername} is the victor!'
+// }
