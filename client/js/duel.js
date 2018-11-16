@@ -41,3 +41,25 @@
 
 //   return false
 // })
+import { userHtml } from './template.js'
+
+$('form').submit(() => {
+  const leftUsername = $('#username-left').val()
+  const rightUsername = $('#username-right').val()
+
+  fetch(`${USERS_URL}?username=${leftUsername}&username=${rightUsername}`)
+    .then(response => response.json())
+    .then(users => {
+      if (!users.message) {
+        const usersHtml = users.map(user => userHtml(user))
+        $('.user-results.left').html(usersHtml[0])
+        $('.user-results.right').html(usersHtml[1])
+        $('.duel-container').removeClass('hide')
+      }
+    })
+    .catch(err => {
+      $('.error').html(err)
+      $('.dual-error').removeClass('hide')
+    })
+  return false
+})

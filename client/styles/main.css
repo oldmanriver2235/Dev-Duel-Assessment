@@ -1,7 +1,8 @@
 body {
-    background-color: #bbc5bd;
+    background-color: #8fb998;
     width: 100vw;
     height: 100vh;
+    background-image: url("https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?auto=compress&cs=tinysrgb&h=350");
 
     font-family: "Fira Code", serif;
 }
@@ -41,6 +42,7 @@ main hr {
     border-color: #555555;
     background-color: #555555;
     color: #555555;
+    
 }
 
 main > span {
